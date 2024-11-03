@@ -50,11 +50,11 @@ async def get_ai_answer_from_context(context: str, question: str):
 
 @app.post("/llama")
 async def ai_answer(max_length: int, max_new_tokens: int, question: str = Body(...)):
-    return get_ai_answer(question, max_length, max_new_tokens)
+    return await get_ai_answer(question, max_length, max_new_tokens)
 
 @app.post("/context")
 async def ai_answer_from_context(question: str, context: str = Body(...)):
-    return get_ai_answer_from_context(context, question)
+    return await get_ai_answer_from_context(context, question)
 
 
 if __name__ == "__main__":
